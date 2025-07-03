@@ -17,8 +17,8 @@
 2. Затем необходимо скормить скачанные файлы пакетному менеджеру ЛаТеХа.
     ```bash
     $ mkdir $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
-    $ cp bmstu-logo.pdf $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
-    $ cp bmstu-cw-title.sty $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
+    $ cp src/bmstu-logo.pdf $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
+    $ cp src/bmstu-cw-title.sty $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
     ```
 3. После этого в своем документе или в преамбуле подключаем пакет
     ```latex
