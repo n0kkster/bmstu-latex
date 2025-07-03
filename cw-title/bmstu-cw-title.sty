@@ -1,0 +1,173 @@
+%% bmstu-cw-title.sty
+%% Based on original work by Mikael Novikov (2023)
+%% https://github.com/Orianti/bmstu-latex-class/blob/master/bmstu/bmstu-title.sty
+%% Modified and maintained by Alexander Divaev, 2025
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Alexander Divaev.
+
+% Установка мета-данных выходного файла
+\newcommand{\documentmeta}[4]
+{
+	\hypersetup{
+		pdftitle={#1 #2 #3},
+		pdfsubject={#4},
+		pdfauthor={#2}
+	}
+}
+
+% Cоздание полей
+% \RequirePackage[normalem]{ulem}
+\RequirePackage{stackengine}
+\newcommand{\longunderline}[1]
+{
+	\uline{#1\hfill\mbox{}}
+}
+\newcommand{\fixunderline}[3]
+{
+	$\underset{\text{#3}}{\text{\uline{\stackengine{0pt}{\hspace{#2}}{\text{#1}}{O}{c}{F}{F}{L}}}}$
+}
+
+% Создание горизонтальной линии
+\makeatletter
+\newcommand{\vhrulefill}[1]
+{
+	\leavevmode\leaders\hrule\@height#1\hfill \kern\z@
+}
+\makeatother
+
+% Создание шапки титульной страницы
+\newcommand{\titlepageheader}[2]
+{
+	\noindent
+	\begin{minipage}{0.14\linewidth}
+		\vspace{3.5mm}
+		\includegraphics[width=\linewidth]{bmstu-logo}
+	\end{minipage}%
+	\begin{minipage}{0.89\linewidth}
+		\singlespacing \footnotesize \bfseries \center
+		Министерство науки и высшего образования Российской Федерации \\
+		Федеральное государственное автономное образовательное учреждение \\
+		высшего образования \\
+		<<Московский государственный технический университет \\
+		имени Н.~Э.~Баумана \\
+		(национальный исследовательский университет)>> \\
+		(МГТУ им. Н.~Э.~Баумана) \\
+	\end{minipage}
+	\hfill
+
+	\vspace{-4.2mm}
+	\vhrulefill{0.9mm} \\
+	\vspace{-7mm}
+	\vhrulefill{0.2mm} \\
+	\vspace{2.8mm}
+
+	{
+		\small
+		ФАКУЛЬТЕТ \longunderline{<<#1>>} \\
+		\vspace{3.3mm}
+		КАФЕДРА \longunderline{<<#2>>} \\
+	}
+}
+
+% Установка заголовков РПЗ
+\newcommand{\titlepagenotetitle}[2]
+{
+	{
+		\Large \bfseries
+		РАСЧЕТНО-ПОЯСНИТЕЛЬНАЯ ЗАПИСКА \\
+	}
+	\vspace{5mm}
+	{
+		\Large \itshape
+		#1 \\
+		\vspace{5mm}
+		НА ТЕМУ: \\
+		\uline{<<#2>>} \\
+	}
+}
+
+% Создание поля студента
+\RequirePackage{pgffor}
+
+\newcommand*\titlepagestudentscontent{}
+
+\newcommand{\maketitlepagestudent}[1]
+{
+	\foreach \s/\g in {#1} {
+		\gappto\titlepagestudentscontent{Студент \fixunderline}
+		\xappto\titlepagestudentscontent{{\g}}
+		\gappto\titlepagestudentscontent{{25mm}{(Группа)} &}
+		\gappto\titlepagestudentscontent{\fixunderline{}{40mm}{(Подпись, дата)} \vspace{1.3mm} &}
+		\gappto\titlepagestudentscontent{\fixunderline}
+		\xappto\titlepagestudentscontent{{\s}}
+		\gappto\titlepagestudentscontent{{40mm}{(И.~О.~Фамилия)} \\}
+	}
+}
+
+% Создание прочих полей
+\newcommand*\titlepageotherscontent{}
+
+\newcommand{\maketitlepageothers}[2]
+{
+	\foreach \c in {#2} {
+		\gappto\titlepagestudentscontent{#1 &}
+		\gappto\titlepagestudentscontent{\fixunderline{}{40mm}{(Подпись, дата)} \vspace{1.3mm} &}
+		\gappto\titlepagestudentscontent{\fixunderline}
+		\xappto\titlepagestudentscontent{{\c}}
+		\gappto\titlepagestudentscontent{{40mm}{(И.~О.~Фамилия)} \\}
+	}
+}
+
+% Установка исполнителей работы
+\newcommand{\titlepageauthors}[5]
+{
+	{
+		\renewcommand{\titlepagestudentscontent}{}
+		\maketitlepagestudent{#1}
+
+		\renewcommand{\titlepageotherscontent}{}
+		\maketitlepageothers{#2}{#3}
+		\maketitlepageothers{Консультант}{#4}
+		\maketitlepageothers{Нормоконтролер}{#5}
+
+		\small
+		\begin{tabularx}{\textwidth}{@{}>{\hsize=.5\hsize}X>{\hsize=.25\hsize}X>{\hsize=.25\hsize}X@{}}
+			\titlepagestudentscontent
+
+			\titlepageotherscontent
+		\end{tabularx}
+	}
+}
+
+% Создание титульной страницы РПЗ к КР
+\newcommand{\makecourseworktitle}[6]
+{
+	\documentmeta{РПЗ к КР}{#4}{}{#3}
+
+	\begin{titlepage}
+		\centering
+
+		\titlepageheader{#1}{#2}
+		\vspace{15.8mm}
+
+		\titlepagenotetitle{К КУРСОВОЙ РАБОТЕ}{#3}
+		\vfill
+
+		\titlepageauthors{#4}{Руководитель курсовой работы}{#5}{#6}{}
+		\vspace{14mm}
+
+		\textit{{\the\year} г.}
+	\end{titlepage}
+
+	\setcounter{page}{2}
+}
