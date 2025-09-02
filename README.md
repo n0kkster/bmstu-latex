@@ -17,4 +17,5 @@
 ## Что здесь можно найти?
 Материалы будут добавляться по мере их необходимости в учебном процессе. Пока что список следующий:
 
-- [title](https://github.com/n0kkster/bmstu-latex/tree/main/title) - Шаблон титульников для отчетов/РПЗ. Подробности в папке.
+- [title](https://github.com/n0kkster/bmstu-latex/tree/main/title) - Шаблон титульников для отчетов/РПЗ.
+- [preamble](https://github.com/n0kkster/bmstu-latex/tree/main/preamble) - Преамбула для оформления отчетов/РПЗ по ГОСТу.
