@@ -19,7 +19,8 @@
     ├── main.tex
     └── makefile
     ```
-
+    
+    main.tex:
     ```latex
     \documentclass{...}
     
