@@ -96,6 +96,24 @@
 	}
 }
 
+% Установка заголовков отчета
+\RequirePackage{etoolbox}
+\RequirePackage{textcase} 
+\newcommand{\titlepagereporttitle}[4]
+{
+	{
+		\Large \bfseries
+		ОТЧЕТ ПО \MakeTextUppercase{#1}
+	}
+	{
+		\large \bfseries
+		\ifblank{#2}{}{по курсу <<#2>> \\}
+		\ifblank{#3}{}{на тему: \\}
+	}
+	\ifblank{#3}{}{\large{<<#3>>} \\}
+	\ifblank{#4}{}{Вариант №~#4 \\}
+}
+
 % Создание поля студента
 \RequirePackage{pgffor}
 
@@ -164,6 +182,29 @@
 		\vfill
 
 		\titlepageauthors{#4}{Руководитель курсовой работы}{#5}{#6}{}
+		\vspace{14mm}
+
+		\textit{{\the\year} г.}
+	\end{titlepage}
+
+	\setcounter{page}{2}
+}
+
+% Создание титульной страницы отчета
+\newcommand{\makereporttitle}[8]
+{
+	\documentmeta{Отчет}{#7}{по #3 по курсу #4}{#5}
+
+	\begin{titlepage}
+		\centering
+
+		\titlepageheader{#1}{#2}
+		\vspace{15.8mm}
+
+		\titlepagereporttitle{#3}{#4}{#5}{#6}
+		\vfill
+
+		\titlepageauthors{#7}{Преподаватель}{#8}{}{}
 		\vspace{14mm}
 
 		\textit{{\the\year} г.}
