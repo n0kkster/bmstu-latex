@@ -55,6 +55,16 @@
 % Настройки оглавления
 \usepackage{multirow}
 \usepackage{longtable}
+% \usepackage{etoolbox}
+% \makeatletter
+% \patchcmd{\tableofcontents}{\@starttoc{toc}}{\vspace{-1cm}\@starttoc{toc}}{}{}
+% \makeatother
+% \usepackage{tocloft}
+% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% \renewcommand{\cfttoctitlefont}{\hfill\large\bfseries}
+% \renewcommand{\cftaftertoctitle}{\hfill\hfill}
+% \setlength\cftbeforetoctitleskip{-22pt}
+% \setlength\cftaftertoctitleskip{15pt}
 
 % Гиперссылки
 \usepackage[pdftex]{hyperref}
@@ -74,19 +84,19 @@
 \renewcommand{\labelitemi}{---}
 
 % Листинги 
-\usepackage{courier}
+% \usepackage{courier}
 
 \usepackage{float}
 \usepackage{listings}
 \floatstyle{plaintop}
-\newfloat{code}{H}{myc}
+% \newfloat{code}{H}{myc}
 
 \usepackage{chngcntr} % Listings counter within section set main.tex after begin document
 
 % Для листинга кода:
 \lstset{
 	basicstyle=\small\ttfamily,			% размер и начертание шрифта для подсветки кода
-	language=C++,   					% выбор языка для подсветки	
+	language=C,   					% выбор языка для подсветки	
 	numbers=left,						% где поставить нумерацию строк (слева\справа)
 	numbersep=5pt,
 	% stepnumber=1,						% размер шага между двумя номерами строк
@@ -95,13 +105,13 @@
 	numbersep=5pt,						% как далеко отстоят номера строк от подсвечиваемого кода
 	frame=single,						% рисовать рамку вокруг кода
 	tabsize=4,							% размер табуляции по умолчанию равен 4 пробелам
-	captionpos=b,						% позиция заголовка вверху [t] или внизу [b]
+	captionpos=t,						% позиция заголовка вверху [t] или внизу [b]
 	breaklines=true,					
 	breakatwhitespace=true,				% переносить строки только если есть пробел
 	escapeinside={\#*}{*)},				% если нужно добавить комментарии в коде
 	inputencoding=utf8x,
 	backgroundcolor=\color{white},
-	numberstyle=,%\tiny,					    % размер шрифта для номеров строк
+	numberstyle=\tiny,					    % размер шрифта для номеров строк
 	keywordstyle=\color{blue},
 	stringstyle=\color{red!90!black}, % color of text in ""
 	commentstyle=\color{green!50!black}
@@ -219,4 +229,24 @@
 \NewDocumentCommand{\ulinetext}{O{3cm} O{c} m m} % O - optional; m - mandatory
 {\underset{#3}{\uline{\makebox[#1][#2]{#4}}}}
 
+% Пакет для титульников
 \usepackage{bmstu-title}
+
+% Команда для создания ненумерованных секций
+\newcommand{\numberlesssection}[1]{
+	\phantomsection\section*{#1}\addcontentsline{toc}{section}{#1}
+}
+
+% Вставка картиночков
+\newcommand{\img}[3] {
+	\begin{figure}[h!]
+		\center{\includegraphics[height=#1]{schemes/#2}}
+		\caption{#3}
+		\label{img:#2}
+	\end{figure}
+}
+
+% Однострочный код
+\newcommand{\code}[1]{{\small \ttfamily #1}}
+
+\usepackage{siunitx}
