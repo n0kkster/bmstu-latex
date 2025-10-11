@@ -1,39 +1,53 @@
-\usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
-\usepackage[T2A]{fontenc} % Поддержка русских букв
-\usepackage[utf8]{inputenc} % Кодировка utf8
-\usepackage[english,russian]{babel} % Языки: русский, английский
-
-\usepackage[14pt]{extsizes}
-
-\usepackage[table]{xcolor}
-
-\usepackage{graphicx}
-\usepackage{multirow}
-
-\usepackage{caption}
-\captionsetup{labelsep=endash}
-\captionsetup[figure]{name={Рисунок}}
-
-\usepackage{amsmath}
+\usepackage{adjustbox}
 \usepackage{amsfonts}
-
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage[english,russian]{babel}
+\usepackage{blindtext}
+\usepackage{bmstu-title}
+\usepackage{caption}
+\usepackage{chngcntr}
+\usepackage{cmap}
+\usepackage{csvsimple}
+\usepackage{enumitem} 
+\usepackage[14pt]{extsizes}
+\usepackage{float}
+\usepackage[T2A]{fontenc}
 \usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage[pdftex]{hyperref}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{pdfpages}
+\usepackage{ragged2e}
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage[figure,table]{totalcount}
+\usepackage{threeparttable}
+\usepackage{titlesec}[explicit]
+\usepackage{ulem}
+\usepackage{url}
+\usepackage[table]{xcolor}
+\usepackage{xparse}
+
+% Настройка полей
+% ============================
 \geometry{left=30mm}
 \geometry{right=15mm}
 \geometry{top=20mm}
 \geometry{bottom=20mm}
+% ============================
 
-\usepackage{enumitem}
-
-\usepackage{tabularx}
-
-% Переопределение стандартных \section, \subsection, \subsubsection по ГОСТу;
-
-% \usepackage{titlesec}
-\usepackage{titlesec}[explicit]
+% Форматирование секций
+% ============================
 \titleformat{name=\section,numberless}[block]{\normalfont\large\bfseries\centering}{}{0pt}{}
 \titleformat{\section}[block]{\normalfont\large\bfseries}{\thesection}{1em}{}
-\titlespacing\section{\parindent}{*4}{*4}
 
 \titleformat{\subsection}[hang]
 {\bfseries\large}{\thesubsection}{1em}{}
@@ -43,83 +57,55 @@
 {\bfseries\large}{\thesubsubsection}{1em}{}
 \titlespacing\subsubsection{\parindent}{*2}{*2}
 
-\usepackage{url}
+\titlespacing\section{\parindent}{*4}{*4}
+% ============================
 
-\usepackage{setspace}
-\onehalfspacing % Полуторный интервал
+% Общее форматирование
+% ============================
+% Полуторный интервал
+\onehalfspacing
+
+% Убираем увеличенные пробелы после точек
 \frenchspacing
+
+% Красная строка
 \setlength\parindent{1.25cm}
+% ============================
 
-\usepackage{indentfirst} % Красная строка
-
-% Настройки оглавления
-\usepackage{multirow}
-\usepackage{longtable}
-% \usepackage{etoolbox}
-% \makeatletter
-% \patchcmd{\tableofcontents}{\@starttoc{toc}}{\vspace{-1cm}\@starttoc{toc}}{}{}
-% \makeatother
-% \usepackage{tocloft}
-% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-% \renewcommand{\cfttoctitlefont}{\hfill\large\bfseries}
-% \renewcommand{\cftaftertoctitle}{\hfill\hfill}
-% \setlength\cftbeforetoctitleskip{-22pt}
-% \setlength\cftaftertoctitleskip{15pt}
-
-% Гиперссылки
-\usepackage[pdftex]{hyperref}
+% Сокрытие цветных рамок вокруг ссылок
 \hypersetup{hidelinks}
 
-% Дополнительное окружения для подписей
-\usepackage{array}
-\newenvironment{signstabular}[1][1]{
-	\renewcommand*{\arraystretch}{#1}
-	\tabular
-}{
-	\endtabular
-}
-
-\usepackage{enumitem} 
-\setenumerate[0]{label=\arabic*)} % Изменение вида нумерации списков
+% Настройка списков
+% ============================
+\setenumerate[0]{label=\arabic*)}
 \renewcommand{\labelitemi}{---}
+% ============================
 
-% Листинги 
-% \usepackage{courier}
-
-\usepackage{float}
-\usepackage{listings}
-\floatstyle{plaintop}
-% \newfloat{code}{H}{myc}
-
-\usepackage{chngcntr} % Listings counter within section set main.tex after begin document
-
-% Для листинга кода:
+% Настройки листингов
+% ============================
 \lstset{
-	basicstyle=\small\ttfamily,			% размер и начертание шрифта для подсветки кода
-	language=C,   					% выбор языка для подсветки	
-	numbers=left,						% где поставить нумерацию строк (слева\справа)
+	basicstyle=\footnotesize\ttfamily\linespread{0.8},
+	language=C,
+	numbers=left,
 	numbersep=5pt,
-	% stepnumber=1,						% размер шага между двумя номерами строк
 	xleftmargin=17pt,
-	% showstringspaces=false,
-	numbersep=5pt,						% как далеко отстоят номера строк от подсвечиваемого кода
-	frame=single,						% рисовать рамку вокруг кода
-	tabsize=4,							% размер табуляции по умолчанию равен 4 пробелам
-	captionpos=t,						% позиция заголовка вверху [t] или внизу [b]
-	breaklines=true,					
-	breakatwhitespace=true,				% переносить строки только если есть пробел
-	escapeinside={\#*}{*)},				% если нужно добавить комментарии в коде
+	numbersep=5pt,
+	frame=single,
+	tabsize=4,	
+	captionpos=b,
+	breaklines=true,
+	breakatwhitespace=true,	
+	escapeinside={\#*}{*)},	
 	inputencoding=utf8x,
 	backgroundcolor=\color{white},
-	numberstyle=\tiny,					    % размер шрифта для номеров строк
+	numberstyle=\tiny,
 	keywordstyle=\color{blue},
-	stringstyle=\color{red!90!black}, % color of text in ""
+	stringstyle=\color{red!90!black}, 
 	commentstyle=\color{green!50!black}
 }
 \lstset{
- morekeywords={size_t, likely}
+	morekeywords={size_t, likely}
 }
-
 \lstset{
 	literate=
 	{а}{{\selectfont\char224}}1
@@ -189,55 +175,48 @@
 	{Ю}{{\selectfont\char222}}1
 	{Я}{{\selectfont\char223}}1
 }
+% ============================
 
-% Работа с изображениями и таблицами; переопределение названий по ГОСТу
-\usepackage{caption}
-\captionsetup[figure]{name={Рисунок},labelsep=endash}
-\captionsetup[table]{singlelinecheck=false, labelsep=endash}
+% Настройка подписей 
+% ============================
+\captionsetup[figure]{
+	name={Рисунок},
+	justification=centering,
+	labelsep=endash,
+	singlelinecheck=on
+}
+\captionsetup[table]{
+	name={Таблица},
+	justification=raggedright,
+	labelsep=endash,
+	singlelinecheck=off
+}
+% \captionsetup[lstlisting]{
+% 	name={Листинг},
+% 	justification=centering,
+% 	labelsep=endash,
+% 	singlelinecheck=on
+% }
+% ============================
 
-\usepackage[justification=centering]{caption} % Настройка подписей float объектов	
-
-\usepackage{csvsimple}
-
-\usepackage{ulem} % Нормальное нижнее подчеркивание
-\usepackage{hhline} % Двойная горизонтальная линия в таблицах
-\usepackage[figure,table]{totalcount} % Подсчет изображений, таблиц
-\usepackage{rotating} % Поворот изображения вместе с названием
-\usepackage{lastpage} % Для подсчета числа страниц
-
+% Метки в библиографии
+% ============================
 \makeatletter
-\renewcommand\@biblabel[1]{#1.} % [1] -> 1. in bibliography
+\renewcommand\@biblabel[1]{#1.}
 \makeatother
+% ============================
 
-\usepackage{float} % Place figures anywhere you want; ignore floating
+% Переопределение \underset для лучшего отображения нижних индексов в тексте
+\renewcommand{\underset}[2]{\ensuremath{\mathop{\mbox{#2}}\limits_{\mbox{\scriptsize #1}}}}
 
-\usepackage{ragged2e} % Перенос слов на следующую строку
-\usepackage{pdfpages}
-
-\usepackage{threeparttable}
-
-\usepackage{blindtext}
-
-% CW-specific
-
-\usepackage{xparse} % \NewDocumentCommand for creating custom commands
-
-\usepackage{adjustbox} % Hyperlinks
-
-\renewcommand{\underset}[2]{\ensuremath{\mathop{\mbox{#2}}\limits_{\mbox{\scriptsize #1}}}} % Use \underset in normal environment, not only in math
-
-\NewDocumentCommand{\ulinetext}{O{3cm} O{c} m m} % O - optional; m - mandatory
+% Подчёркнутый текст с пояснением снизу
+\NewDocumentCommand{\ulinetext}{O{3cm} O{c} m m}
 {\underset{#3}{\uline{\makebox[#1][#2]{#4}}}}
 
-% Пакет для титульников
-\usepackage{bmstu-title}
+% Секция без номера, но с записью в оглавлении
+\newcommand{\numberlesssection}[1]{\phantomsection\section*{#1}\addcontentsline{toc}{section}{#1}}
 
-% Команда для создания ненумерованных секций
-\newcommand{\numberlesssection}[1]{
-	\phantomsection\section*{#1}\addcontentsline{toc}{section}{#1}
-}
-
-% Вставка картиночков
+% Вставка картинок
 \newcommand{\img}[3] {
 	\begin{figure}[h!]
 		\center{\includegraphics[height=#1]{schemes/#2}}
@@ -246,7 +225,8 @@
 	\end{figure}
 }
 
-% Однострочный код
+% Inline код
 \newcommand{\code}[1]{{\small \ttfamily #1}}
 
-\usepackage{siunitx}
+% Центрирование в таблице, растянутой по ширине страницы
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
