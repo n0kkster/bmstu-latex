@@ -212,3 +212,26 @@
 
 	\setcounter{page}{2}
 }
+
+% Создание титульной страницы РПЗ к НИР
+\newcommand{\makeresearchtitle}[6]
+{
+	\documentmeta{РПЗ к НИР}{#4}{}{#3}
+
+	\begin{titlepage}
+		\centering
+
+		\titlepageheader{#1}{#2}
+		\vspace{15.8mm}
+
+		\titlepagenotetitle{К НАУЧНО-ИССЛЕДОВАТЕЛЬСКОЙ РАБОТЕ}{#3}
+		\vfill
+
+		\titlepageauthors{#4}{Руководитель НИР}{#5}{#6}{}
+		\vspace{14mm}
+
+		\textit{\textsl{\the\year} г.}
+	\end{titlepage}
+
+	\setcounter{page}{2}
+}
