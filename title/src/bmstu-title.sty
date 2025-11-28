@@ -159,11 +159,17 @@
 		\maketitlepageothers{Нормоконтролер}{#5}
 
 		\small
-		\begin{tabularx}{\textwidth}{@{}>{\hsize=.5\hsize}X>{\hsize=.25\hsize}X>{\hsize=.25\hsize}X@{}}
+		\begin{tabular}{
+			@{}
+			p{\dimexpr 0.5\textwidth - 2\tabcolsep}
+			p{\dimexpr 0.25\textwidth - 1\tabcolsep}
+			p{\dimexpr 0.25\textwidth - 1\tabcolsep}
+			@{}
+		}
 			\titlepagestudentscontent
 
 			\titlepageotherscontent
-		\end{tabularx}
+		\end{tabular}
 	}
 }
 
