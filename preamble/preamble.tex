@@ -61,6 +61,14 @@
 \titlespacing\subsubsection{\parindent}{*2}{*2}
 
 \titlespacing\section{\parindent}{*4}{*4}
+
+% Отточие у секций
+\titlecontents{section}[0pt]
+  {\addvspace{1em}}
+  {\bfseries\thecontentslabel\quad}
+  {\bfseries}
+  {\normalfont\hspace{0.5em}\titlerule*[1pc]{.}\contentspage}
+  []
 % ============================
 
 % Общее форматирование
