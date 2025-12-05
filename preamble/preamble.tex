@@ -294,3 +294,24 @@
 	title after break={Листинг~\thetcbcounter\ (продолжение)},
 	label={#2},
 }
+
+% Листинг из файла
+\newtcbinputlisting[use counter=lstlisting]{\flisting}[4][]{
+  boxrule=0.5pt,
+  breakable,
+  colback=white,
+  colbacktitle=white,
+  colframe=black,
+  fonttitle=\color{black},
+  listing only,
+  listing file={#3},
+  listing options={
+    language=#4,
+    frame=none,
+    xleftmargin=10pt
+  },
+  sharp corners,
+  title={Листинг~\thetcbcounter~--~#1},
+  title after break={Листинг~\thetcbcounter\ (продолжение)},
+  label={#2}
+}
