@@ -273,6 +273,9 @@
 \regtotcounter{figure}
 \regtotcounter{table}
 
+% Сохранение ширины таблицы после переноса, для ltablex
+\keepXColumns
+
 % Листинги с автопереносом
 \tcbuselibrary{listings, breakable, skins}
 \newtcblisting[use counter=lstlisting]{listing}[3][]{
