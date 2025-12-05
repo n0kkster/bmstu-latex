@@ -248,6 +248,9 @@
 % Секция без номера, но с записью в оглавлении
 \newcommand{\numberlesssection}[1]{\phantomsection\section*{#1}\addcontentsline{toc}{section}{#1}}
 
+% Подсекция без номера, но с записью в оглавлении
+\newcommand{\numberlesssubsection}[1]{\phantomsection\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+
 % Вставка картинок
 \newcommand{\img}[3] {
 	\begin{figure}[h!]
