@@ -90,6 +90,26 @@
 % ============================
 \setenumerate[0]{label=\arabic*)}
 \renewcommand{\labelitemi}{---}
+
+% Выравнивание списка по маркеру и полуторный интерва
+\setlist[enumerate]{
+    label=\arabic*), 
+    leftmargin=2cm,
+    labelsep=0.3cm,
+    itemindent=0pt,
+	itemsep=0pt, 
+	parsep=0pt,
+	topsep=0pt
+}
+
+\setlist[itemize]{
+    label=---,
+    leftmargin=2cm,
+    labelsep=0.3cm,
+	itemsep=0pt, 
+	parsep=0pt,
+	topsep=0pt
+}
 % ============================
 
 % Настройки листингов
