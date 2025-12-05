@@ -318,3 +318,30 @@
   title after break={Листинг~\thetcbcounter\ (продолжение)},
   label={#2}
 }
+
+% Вставка страницы A3
+\newcommand{\AThreeStart}{
+	\clearpage
+	\pdfpagewidth=420mm
+	\pdfpageheight=297mm
+	\paperwidth=420mm
+	\paperheight=297mm
+
+	\textwidth=375mm
+	\textheight=257mm
+	\columnwidth=\textwidth
+	\hsize=\textwidth
+	\vsize=\textheight
+}
+
+\newcommand{\AThreeEnd}{
+	\clearpage
+	\pdfpagewidth=210mm
+	\pdfpageheight=297mm
+	\paperwidth=210mm
+	\paperheight=297mm
+}
+
+\newenvironment{a3page}
+  {\AThreeStart}
+  {\AThreeEnd}
