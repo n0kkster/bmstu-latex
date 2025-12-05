@@ -238,3 +238,32 @@
 
 % Центрирование в таблице, растянутой по ширине страницы
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% Приложения
+\newcounter{appsection}
+\renewcommand{\theappsection}{\Asbuk{appsection}}
+
+\newcommand{\appsection}{
+	\stepcounter{appsection}
+	\def\appname{ПРИЛОЖЕНИЕ~\theappsection}
+	\phantomsection
+	\section*{\appname}
+	\addcontentsline{toc}{section}{\appname}
+
+	\renewcommand{\thefigure}{\theappsection.\arabic{figure}}%
+	\renewcommand{\thetable}{\theappsection.\arabic{table}}%
+	\renewcommand{\thelstlisting}{\theappsection.\arabic{lstlisting}}%
+	\renewcommand{\theequation}{\theappsection.\arabic{equation}}%
+
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+	\setcounter{lstlisting}{0}
+	\setcounter{equation}{0}
+	\setcounter{section}{0}
+	\setcounter{subsection}{0}
+	\setcounter{subsubsection}{0}
+}
+
+% Подсчет количества рисунков и таблиц
+\regtotcounter{figure}
+\regtotcounter{table}
