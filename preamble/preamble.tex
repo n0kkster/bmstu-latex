@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{array}
 \usepackage[english,russian]{babel}
+\usepackage{blindtext}
 \usepackage{bmstu-title}
 \usepackage{caption}
 \usepackage{chngcntr}
@@ -20,6 +21,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lastpage}
 \usepackage{listings}
+\usepackage{ltablex}
+\usepackage{microtype} 
 \usepackage{multirow}
 \usepackage{pdfpages}
 \usepackage{ragged2e}
@@ -27,7 +30,9 @@
 \usepackage{setspace}
 \usepackage{siunitx}
 \usepackage{tabularx}
-\usepackage[figure,table]{totalcount}
+\usepackage{tcolorbox}
+\usepackage{titletoc}
+\usepackage{totcount}
 \usepackage{titlesec}[explicit]
 \usepackage{ulem}
 \usepackage{url}
@@ -267,3 +272,25 @@
 % Подсчет количества рисунков и таблиц
 \regtotcounter{figure}
 \regtotcounter{table}
+
+% Листинги с автопереносом
+\tcbuselibrary{listings, breakable, skins}
+\newtcblisting[use counter=lstlisting]{listing}[3][]{
+	boxrule=0.5pt,
+	breakable,
+	colback=white,
+	colbacktitle=white,
+	colframe=black,
+	fonttitle=\color{black},
+	listing only,
+	listing options={
+		language=#3,
+		frame=none,
+		xleftmargin=0pt,
+		title={#1}
+	},
+	sharp corners,
+	title={Листинг~\thetcbcounter~--~#1},
+	title after break={Листинг~\thetcbcounter\ (продолжение)},
+	label={#2},
+}
