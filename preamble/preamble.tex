@@ -89,27 +89,33 @@
 
 % Настройка списков
 % ============================
-\setenumerate[0]{label=\arabic*)}
-\renewcommand{\labelitemi}{---}
+\setlist{
+    labelsep=0.3cm,
+    itemsep=0pt,
+    parsep=0pt,
+    topsep=0pt,
+    itemindent=0pt
+}
 
-% Выравнивание списка по маркеру и полуторный интерва
 \setlist[enumerate]{
     label=\arabic*), 
     leftmargin=2cm,
-    labelsep=0.3cm,
-    itemindent=0pt,
-	itemsep=0pt, 
-	parsep=0pt,
-	topsep=0pt
 }
+\setlist[enumerate,2]{
+    label=\arabic*), 
+    leftmargin=*,
+}
+
 
 \setlist[itemize]{
     label=---,
     leftmargin=2cm,
-    labelsep=0.3cm,
-	itemsep=0pt, 
-	parsep=0pt,
-	topsep=0pt
+    labelsep=0.3cm
+}
+\setlist[itemize,2]{
+    label=---,
+    leftmargin=*,
+    labelsep=0.3cm
 }
 % ============================
 
