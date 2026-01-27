@@ -1,4 +1,4 @@
-# Репозиторий со всякой всячиной для верстки документов по стандартам МГТУ им. Н. Э. Баумана.
+# Репозиторий со всякой всячиной для верстки документов по стандартам МГТУ им. Н. Э. Баумана
 
 ***Дисклеймер!***
 
@@ -19,3 +19,5 @@
 
 - [title](https://github.com/n0kkster/bmstu-latex/tree/main/title) - Шаблон титульников для отчетов/РПЗ.
 - [preamble](https://github.com/n0kkster/bmstu-latex/tree/main/preamble) - Преамбула для оформления отчетов/РПЗ по ГОСТу.
+- [bibliography](https://github.com/n0kkster/bmstu-latex/tree/main/bibliography) - Стиль для оформления списка использованных источников по ГОСТу.
+- [compilation](https://github.com/n0kkster/bmstu-latex/tree/main/compilation) - Система компиляции LaTeX документов в PDF.
