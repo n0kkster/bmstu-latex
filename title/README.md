@@ -16,7 +16,7 @@
 1. В первую очередь необходимо скачать репозиторий целиком или конкретно эти файлы. Думаю тут и без подсказок осилите :\).
 2. Затем необходимо скормить скачанные файлы пакетному менеджеру ЛаТеХа.
     ```bash
-    $ mkdir $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
+    $ mkdir -p $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
     $ cp src/bmstu-logo.pdf $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
     $ cp src/bmstu-title.sty $(kpsewhich -var-value TEXMFHOME)/tex/latex/bmstu/
     ```
