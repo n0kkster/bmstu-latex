@@ -18,20 +18,39 @@
 
 ## Как использовать?
 
+В примере рассматривается следующая структура проекта, при желании можно отойти от нее, но необходимо будет поменять
+пути в паре мест:
+```
+.
+└── report
+    ├── auto
+    │   ├── gost705.bst
+    │   └── preamble.tex
+    ├── img
+    │   └── example.png
+    ├── report.pdf
+    ├── report.tex
+    ├── makefile
+    └── parts
+        ├── 00-summary.tex
+        ├── 01-definitions.tex
+        ├── 02-introduction.tex
+        ├── 03-analytical.tex
+        ├── 04-design.tex
+        ├── 05-classification.tex
+        ├── 06-conclusion.tex
+        ├── 07-bibliography.tex
+        └── bibliography.bib
+```
+
 1. В первую очередь необходимо скачать репозиторий целиком или конкретно преамбулу. Думаю тут и без подсказок осилите :\).
 2. Затем необходимо подключить преамбулу в начале своего документа.
-    ```
-    .
-    ├── preamble.tex
-    ├── main.tex
-    └── makefile
-    ```
-    
-    main.tex:
+    report.tex:
     ```latex
     \documentclass{...}
     
-    \input{preamble}
+    \input{auto/preamble}
 
     \begindocument{document}
+    ...
     ```
